@@ -1,0 +1,115 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <div class="container-fluid panel">
+        {% with ratings.0 as columns %}
+            {% with columns|slice:"1:" as players %}
+
+                <div class="panel-inner">
+                    <ul class="list-unstyled">
+                        {% for name in players %}
+                            <li>
+                                <div class="checkbox">
+                                    <input class="player" id="list_id_{{ name }}"
+                                           type="checkbox" value="{{ forloop.counter }}" checked>
+                                    <label for="list_id_{{ name }}">{{ name }}</label>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="text-center">Ratings</h1>
+                        <div class="table-responsive">
+                            <table class="table rbt-table">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    {% for column in columns %}
+                                        <th class="id_{{ forloop.counter0 }}">{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody id="id-rating-table">
+                                {% for rating in ratings|slice:"1:" %}
+                                    <tr>
+                                        {% for r in rating %}
+                                            <td class="id_{{ forloop.counter0 }}">{{ r }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="text-center">Summary</h1>
+                        <div class="table-responsive">
+                            <table class="table rbt-table">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>Year/Runs</th>
+                                    <th>Condition</th>
+                                    <th>Average</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for rating in ratings|slice:"1:" %}
+                                    <tr class="row-{{ forloop.counter0 }}">
+                                        <td>{{ rating.0 }}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endwith %}
+        {% endwith %}
+    </div>
+{% endblock %}
+
+
+{% block extrajs %}
+    <script>
+        $().ready(function () {
+            iterateTable();
+        });
+
+        $('.player').change(function () {
+            var value = $(this).val();
+            if ($(this).is(':checked')) {
+                $('.id_' + value).show();
+            } else {
+                $('.id_' + value).hide();
+            }
+            iterateTable();
+        });
+
+        function iterateTable() {
+            $('#id-rating-table').find('tr').each(function (tr_counter) {
+                var sum = 0;
+                var total = 0;
+                $(this).find('td:visible').each(function (td_counter) {
+                    if (td_counter > 0) {
+                        sum += parseInt($(this).text());
+                        total++;
+                    }
+                });
+
+                var average = sum / total;
+                var row_selector = $('.row-' + tr_counter);
+                row_selector.find(':nth-child(3)').text(average);
+                var condition_selector = row_selector.find(':nth-child(2)');
+                if (average < 500) {
+                    condition_selector.text('Bad');
+                } else {
+                    condition_selector.text('Good');
+                }
+            });
+        }
+    </script>
+{% endblock %}

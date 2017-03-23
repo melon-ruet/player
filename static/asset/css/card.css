@@ -1,0 +1,160 @@
+@media (min-width: 767px) {
+
+    .sn-card-container {
+        width: 570px;
+        margin: 0 auto 20px;
+        padding-bottom: 20px;
+        border: 0;
+    }
+
+    .sn-card {
+        height: 265px;
+        padding: 0;
+        position: relative;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        margin: 20px 20px 0;
+    }
+
+}
+
+.sn-card .sn-company {
+
+    top: 30px;
+    left: 30px;
+    height: 50px;
+    width: 542px;
+    position: absolute;
+}
+
+.sn-card .sn-company > .row {
+    margin: 0
+}
+
+.sn-card .sn-company > .row > .col-md-4, .sn-card .sn-company > .row > .col-md-8 {
+    padding: 0;
+
+}
+
+.sn-card .sn-company img {
+    max-height: 100%;
+    width: auto;
+    margin-right: 15px;
+}
+
+.sn-card .sn-company p {
+    margin-top: 11px;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 28px;
+    opacity: 0.7;
+}
+
+.sn-card .sn-company p {
+    margin-top: 11px;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 28px;
+    opacity: 0.7;
+}
+
+.sn-card > .sn-info {
+    border: 1px solid #999;
+    height: 200px;
+    width: 350px;
+    top: 15px;
+    left: 25px;
+    position: absolute;
+}
+
+.sn-card > .sn-text {
+    max-height: 42px;
+    font-size: 10px;
+    width: 542px;
+    bottom: 10px;
+    left: 25px;
+    position: absolute;
+}
+
+.sn-card > .nfc {
+    border-radius: 50% !important;
+    border: 50px solid black;
+    height: 110px;
+    width: 110px;
+    top: 10px;
+    right: 15px;
+    position: absolute;
+    background-color: #fff;
+}
+
+.sn-card >.nfc::after {
+    content: 'nfc';
+    position: absolute;
+    top: 0;
+    left: -70px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sn-card > .qr-code {
+    height: 75px;
+    width: 75px;
+    bottom: 50px;
+    right: 28px;
+    position: absolute;
+}
+
+.sn-card > .qr-code::after {
+    content: 'Qr-kod';
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: 30px;
+    left: -28px;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.qr-code > img {
+    width: 100%;
+    height: 100%;
+}
+
+.qr-code > p {
+    margin-top: 5px;
+    font-size: 8.5px;
+}
+
+.sn-text img{
+    margin-right: 8px;
+    width: 50px;
+}
+
+.sn-text p{
+    line-height: 1.1em;
+    margin-top: -2px;
+}
+
+.sn-card-container .panel-heading{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.node-more-btn {
+    top: -10px;
+    right: -20px;
+}
+
+.node-more-btn .material-icons{
+    color: #808080;
+    font-weight: 700;
+}
